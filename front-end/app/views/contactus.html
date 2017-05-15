@@ -45,22 +45,21 @@
            <div class="col-xs-12">
               <h3>Send us your Feedback</h3> 
            </div>
-            <div class="col-xs-12 col-sm-9">
-                <form class="form-horizontal" role="form" name="feedbackForm" ng-submit="sendFeedback()" novalidate>
-                    <div class="form-group" ng-class="{ 'has-error' : feedbackForm.firstName.$error.required && !feedbackForm.firstName.$pristine }">
+            <div class="col-xs-12 col-sm-9" ng-controller="ContactController">
+                <form class="form-horizontal"  name="feedbackForm" ng-submit="sendFeedback()" novalidate>
+                    <div class="form-group" ng-class="{ 'has-error' : feedbackForm.firstname.$error.required && feedbackForm.firstname.$dirty}">
                         <label for="firstname" class="col-sm-2 control-label">First Name</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name"
-                        ng-model="feedback.firstName" required>
-                          <span ng-show="feedbackForm.firstName.$error.required && !feedbackForm.firstName.$pristine" class="help-block">Your First name is required.</span>
+                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name" ng-model="feedback.firstName" required>
+                          <span ng-show="feedbackForm.firstname.$error.required && !feedbackForm.firstname.$pristine" class="help-block">Your firstname is required.</span>
                       </div>
                     </div>
-                    <div class="form-group" ng-class="{ 'has-error' : feedbackForm.lastName.$error.required && !feedbackForm.lastName.$pristine }">
+                    <div class="form-group" ng-class="{ 'has-error' : feedbackForm.lastname.$error.required && !feedbackForm.lastname.$pristine }">
                         <label for="lastname" class="col-sm-2 control-label">Last Name</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name"
                         ng-model="feedback.lastName" required>
-                        <span ng-show="feedbackForm.lastName.$error.required && !feedbackForm.lastName.$pristine" class="help-block">Your Last name is required.</span>
+                        <span ng-show="feedbackForm.lastname.$error.required && !feedbackForm.lastname.$pristine" class="help-block">Your lastname is required.</span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -85,7 +84,6 @@
                             ng-model="feedback.email" required>
                         <span ng-show="feedbackForm.emailid.$invalid && !feedbackForm.emailid.$pristine" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                         <span ng-show="feedbackForm.emailid.$invalid && !feedbackForm.emailid.$pristine" class="help-block">Enter a valid email address.</span>
-                        <span ng-show="feedbackForm.emailid.$error.required && !feedbackForm.emailid.$pristine" class="help-block">Enter a valid email address.</span>
                         </div>
                     </div>
                     <div class="form-group"  ng-class="{ 'has-error' : invalidChannelSelection }">

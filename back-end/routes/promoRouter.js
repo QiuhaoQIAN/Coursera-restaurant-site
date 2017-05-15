@@ -11,7 +11,7 @@ promoRouter.use(bodyParser.json());
 var Verify = require('./verify');
 
 promoRouter.route('/')
-.get(Verify.verifyOrdinaryUser, function(req,res,next){
+.get(function(req,res,next){
       Promos.find({}, function (err, promo) {
       if (err) throw err;
       res.json(promo);
@@ -39,7 +39,7 @@ promoRouter.route('/')
 });
 
 promoRouter.route('/:promoId')
-.get(Verify.verifyOrdinaryUser,function (req, res, next) {
+.get(function (req, res, next) {
     Promos.findById(req.params.promoId, function (err, promo) {
         if (err) throw err;
         res.json(promo);

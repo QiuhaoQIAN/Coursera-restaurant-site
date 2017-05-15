@@ -9,8 +9,8 @@
 6 silly lifecycle rest-server@0.0.0~prestart: no script for prestart, continuing
 7 info lifecycle rest-server@0.0.0~start: rest-server@0.0.0
 8 verbose lifecycle rest-server@0.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle rest-server@0.0.0~start: PATH: /Users/qianqiuhao/.nvm/versions/node/v7.3.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/qianqiuhao/Desktop/Coursera/node/rest-server-passport/node_modules/.bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/qianqiuhao/.nvm/versions/node/v7.3.0/bin:/Users/qianqiuhao/Desktop/Coursera/node/mongodb/bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:/Applications/MAMP/Library/bin/mysql:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/bin
-10 verbose lifecycle rest-server@0.0.0~start: CWD: /Users/qianqiuhao/Desktop/Coursera/node/rest-server-passport
+9 verbose lifecycle rest-server@0.0.0~start: PATH: /Users/qianqiuhao/.nvm/versions/node/v7.3.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/qianqiuhao/Desktop/Coursera/node/restaurant/back-end/node_modules/.bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/qianqiuhao/.nvm/versions/node/v7.3.0/bin:/Users/qianqiuhao/Desktop/Coursera/node/mongodb/bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:/Applications/MAMP/Library/bin/mysql:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/bin
+10 verbose lifecycle rest-server@0.0.0~start: CWD: /Users/qianqiuhao/Desktop/Coursera/node/restaurant/back-end
 11 silly lifecycle rest-server@0.0.0~start: Args: [ '-c', 'node ./bin/www' ]
 12 silly lifecycle rest-server@0.0.0~start: Returned: code: 1  signal: null
 13 info lifecycle rest-server@0.0.0~start: Failed to exec start script
@@ -25,7 +25,7 @@
 14 verbose stack     at maybeClose (internal/child_process.js:885:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
 15 verbose pkgid rest-server@0.0.0
-16 verbose cwd /Users/qianqiuhao/Desktop/Coursera/node/rest-server-passport
+16 verbose cwd /Users/qianqiuhao/Desktop/Coursera/node/restaurant/back-end
 17 error Darwin 14.5.0
 18 error argv "/Users/qianqiuhao/.nvm/versions/node/v7.3.0/bin/node" "/Users/qianqiuhao/.nvm/versions/node/v7.3.0/bin/npm" "start"
 19 error node v7.3.0
