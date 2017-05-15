@@ -6,6 +6,7 @@ npm install
 bower install
 
 To set up back-end, move to back-end and type:
+
 npm install 
 
 The mongoDB should also be installed correctly.
