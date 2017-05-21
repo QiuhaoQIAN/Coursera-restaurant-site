@@ -12,7 +12,7 @@ var Verify = require('./verify');
 
 promoRouter.route('/')
 .get(function(req,res,next){
-      Promos.find({}, function (err, promo) {
+      Promos.find(req.query, function (err, promo) {
       if (err) throw err;
       res.json(promo);
   });

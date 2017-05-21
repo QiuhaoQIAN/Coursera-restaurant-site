@@ -109,7 +109,7 @@ dishRouter.route('/:dishId/comments')
 dishRouter.route('/:dishId/comments/:commentId')
 .get(Verify.verifyOrdinaryUser, function (req, res, next) {
     Dishes.findById(req.params.dishId)
-    .populate('comments.postedBy') 
+    .populate('comments.postedBy')
     .exec(function (err, dish) {
          if (err) return next(err);
         res.json(dish.comments.id(req.params.commentId));

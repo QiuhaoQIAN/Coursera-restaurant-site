@@ -143,7 +143,7 @@ angular.module('confusionApp')
     $scope.showPromotion = false;
     $scope.message = "Loading ...";
     var leaders = corporateFactory.query({
-            featured: "true"
+            featured:"true"
         })
         .$promise.then(
             function (response) {
@@ -200,7 +200,8 @@ angular.module('confusionApp')
 
     favoriteFactory.query(
         function (response) {
-            $scope.dishes = response.dishes;
+            console.log("2");
+            $scope.dishes = response[0].dishes;
             $scope.showMenu = true;
         },
         function (response) {
@@ -237,7 +238,9 @@ angular.module('confusionApp')
         console.log('Delete favorites', dishid);
         favoriteFactory.delete({id: dishid});
         $scope.showDelete = !$scope.showDelete;
-        $state.go($state.current, {}, {reload: true});
+        //$state.go($state.current, {}, {reload: true});
+        $state.reload();
+        window.location.reload(true);
     };
 }])
 

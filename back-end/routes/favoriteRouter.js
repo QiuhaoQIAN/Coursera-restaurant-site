@@ -10,21 +10,20 @@ var favoriteRouter = express.Router();
 favoriteRouter.use(bodyParser.json());
 
 favoriteRouter.route('/')
-.all(Verify.verifyOrdinaryUser)
-.get(function (req, res, next) {
-    Favorites.find({'postedBy':req.decoded._doc._id})
+.get(Verify.verifyOrdinaryUser,function (req, res, next) {
+    Favorites.find({'postedBy':req.decoded._id})
     .populate('postedBy')
     .populate('dishes')
     .exec(function (err, favorites) {
-        if (err) throw err;
+        if (err) return next(err);
         res.json(favorites);
     });
 })
 
-.post(function (req, res, next) {
-    Favorites.find({'postedBy':req.decoded._doc._id})
+.post(Verify.verifyOrdinaryUser, function (req, res, next) {
+    Favorites.find({'postedBy':req.decoded._id})
     .exec(function(err, favorites){
-        if (err) throw err;
+        if (err) return next(err);
         
        	//if user already has favorite document
        	if(favorites.length != 0) {
@@ -40,7 +39,7 @@ favoriteRouter.route('/')
        		if(!dishExisted) {
        			favorites[0].dishes.push(req.body._id);
        			favorites[0].save(function(err, favorites) {
-       				if(err) throw err;
+                    if (err) return next(err);
        				res.json(favorites);
        			});
        		}
@@ -51,11 +50,11 @@ favoriteRouter.route('/')
        	}
        	//if user doesn't have a favorite document, then create one for him.
        	else{
-       		Favorites.create({"postedBy": req.decoded._doc._id}, function(err, favorites){
-       			if(err) throw err;
+       		Favorites.create({"postedBy": req.decoded._id}, function(err, favorites){
+                if (err) return next(err);
        			favorites.dishes.push(req.body._id);
        			favorites.save(function(err, favorites){
-       				if(err) throw err;
+                    if (err) return next(err);
        				console.log('create new favorites document');
        				res.json(favorites);
        			})
@@ -65,15 +64,16 @@ favoriteRouter.route('/')
 })
 
 .delete(function (req, res, next) {
-    Favorites.remove({'postedBy':req.decoded._doc._id}, function (err, resp) {
-        if (err) throw err;
+    Favorites.remove({'postedBy':req.decoded._id}, function (err, resp) {
+        if (err) return next(err);
         res.json(resp);
     });
 });
 
 favoriteRouter.route('/:dishId')
+
 .delete(Verify.verifyOrdinaryUser, function (req, res, next) {
-	Favorites.find({'postedBy': req.decoded._doc._id}, function(err, favorites) {
+	Favorites.find({'postedBy': req.decoded._id}, function(err, favorites) {
 		if(err) return err;
 		if(favorites.length) {
 			var dishesLength = favorites[0].dishes.length
@@ -82,7 +82,7 @@ favoriteRouter.route('/:dishId')
 				break;
 			}
 			favorites[0].save(function(err,favorites) {
-				if(err) throw err;
+                if (err) return next(err);
 				res.json(favorites);
 			});
 		}

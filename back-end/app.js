@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-
 var config = require('./config');
 
 mongoose.connect(config.mongoUrl);
@@ -27,6 +26,13 @@ var favoriteRouter = require('./routes/favoriteRouter');
 
 
 var app = express();
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods","GET,POST,PUT,DELETE,OPTIONS"),
+    res.header("Access-Control-Allow-Headers", "x-access-token, Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    next();
+});
 
 // Secure traffic only
 app.all('*', function(req, res, next){
@@ -58,6 +64,8 @@ passport.deserializeUser(User.deserializeUser());
 
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 app.use('/', routes);
 app.use('/users', users);
